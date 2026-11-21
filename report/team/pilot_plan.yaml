@@ -3,11 +3,17 @@
 # Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
 #
 # D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu:
-#   b) Theo nhân viên, m = 75:
-#   c) 20 nhân viên mỗi nhóm:
-#   d) 6 depot mỗi nhóm:
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
+#   Nguồn: src/lab13.py::co_mau_d1; chạy python lab13.py --nguoi-2 trong src/.
+#   a) Chia theo yêu cầu: ceil(công thức hai tỉ lệ) = 1.251 yêu cầu mỗi nhóm.
+#   b) Theo nhân viên, m = 75: DE = 1 + 74*0,02 = 2,48;
+#      ceil(1.251*2,48) = 3.103 yêu cầu, ceil(3.103/75) = 42 người/nhóm;
+#      tổng 84 người > 40 người hiện có, không khả thi cho mức chênh 5 điểm.
+#   c) 20 nhân viên mỗi nhóm: n hiệu dụng < 20/0,02 = 1.000 < 1.251,
+#      tăng số yêu cầu mỗi người vẫn không đủ cho mức chênh 5 điểm.
+#   d) 6 depot mỗi nhóm: n hiệu dụng < 6/0,02 = 300; chỉ 6 cụm < 20.
+#   e) Mức chênh 6 điểm: cần 859 hiệu dụng/nhóm; 20 người/nhóm cần m >= 299.
+#      DE = 6,96; 5.980 yêu cầu/nhóm cho n hiệu dụng = 859,20;
+#      tổng 11.960 yêu cầu trong phạm vi pilot, không phải toàn công ty.
 #
 # D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
 #   1. Đối chứng chạy cùng thời gian:
@@ -17,8 +23,13 @@
 #   5. Ít nhất 20 cụm mỗi nhóm:
 #
 # Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
+#   Người 2 bàn giao để người 4 quyết định: nếu chọn 20 người/nhóm và MDE 0,06,
+#   power khi tác động thật chỉ +5 điểm xấp xỉ 0,64, dưới mục tiêu 0,80.
+#   Chưa chốt assignment, MDE hoặc các trường kế hoạch bên dưới.
 #
 # Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+#   Toàn mẫu: 51/1.200 = 4,25%; noi_dia + hang_nang: 39/982 = 3,97%.
+#   Chưa chốt ngưỡng; người 4 cân nhắc đối chứng +2 điểm và trần 6% theo hướng dẫn.
 
 pilot:
   owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
