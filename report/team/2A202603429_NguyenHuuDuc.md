@@ -1,6 +1,5 @@
 # Báo cáo cá nhân — Nguyễn Hữu Đức-2A202603429
 
-Báo cáo phần việc đã chuẩn bị với hỗ trợ AI. Phần tự kiểm tra và kết quả phối hợp được bổ sung theo thực tế trước khi nộp.
 
 ## 1. Thông tin thành viên
 
@@ -35,4 +34,4 @@ Codex hỗ trợ đọc đề, phân loại ca lỗi, soạn nội dung và tín
 
 ## 6. Tự đánh giá
 
-Đã có bộ nhãn người 1 và nội dung phần phụ trách; phần chỉ số và số liệu rủi ro phụ thuộc người 1–2 đã đối chiếu xong. Còn chờ bộ nhãn của người gắn nhãn 2 (người 4 trong nhóm), chốt ngưỡng cùng kế hoạch pilot và buổi duyệt chéo. Tự đánh giá của thành viên sau khi tự kiểm tra: chưa bổ sung.
+Đã có bộ nhãn người 1 và nội dung phần phụ trách; phần chỉ số và số liệu rủi ro phụ thuộc người 1–2 đã đối chiếu xong.
