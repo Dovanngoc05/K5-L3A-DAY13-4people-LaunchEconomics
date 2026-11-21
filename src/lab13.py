@@ -4,6 +4,8 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from numbers import Integral, Real
+from pathlib import Path
 import pandas as pd
 from statistics import NormalDist
 
@@ -17,31 +19,38 @@ BASELINE = 12000    # đồng cho 1 yêu cầu khi nhân viên tự làm (6 phú
 
 # ---------- Nhiệm vụ A1 · Kinh tế của việc chạy lại ----------
 # TODO CP1: viết ba hàm dưới đây cho tới khi kiem_tra_dap_an_biet_truoc() in ĐẠT.
+def _kiem_tra_tham_so_a1(p, k):
+    """Kiểm tra xác suất và số lần thử dùng chung cho ba hàm A1."""
+    if isinstance(p, bool) or not isinstance(p, Real) or not math.isfinite(p) or not 0 <= p <= 1:
+        raise ValueError('p phải là số hữu hạn trong [0, 1]')
+    if k is not None and (isinstance(k, bool) or not isinstance(k, Integral) or k < 1):
+        raise ValueError('k phải là số nguyên dương hoặc None')
+
+
 def so_lan_chay_ky_vong(p, k=None):
     """Số lần chạy trung bình cho 1 yêu cầu khi mỗi lần đúng với xác suất p.
     k = số lần chạy tối đa; k=None nghĩa là chạy lại đến khi đúng."""
-    if not 0 < p <= 1:
-        raise ValueError('p phải nằm trong (0, 1]')
+    _kiem_tra_tham_so_a1(p, k)
+    if p == 0:
+        # Không giới hạn lần thử thì không thể thành công; với giới hạn k,
+        # sẽ dùng hết k lần. Đây là giới hạn của công thức khi p tiến về 0.
+        return math.inf if k is None else float(k)
     if k is None:
         return 1 / p
-    if k < 1:
-        raise ValueError('k phải ít nhất là 1')
     return (1 - (1 - p) ** k) / p
 
 
 def ti_le_thanh_cong(p, k=None):
     """Xác suất yêu cầu thành công sau tối đa k lần chạy."""
-    if not 0 <= p <= 1:
-        raise ValueError('p phải nằm trong [0, 1]')
+    _kiem_tra_tham_so_a1(p, k)
     if k is None:
-        return 1.0
-    if k < 1:
-        raise ValueError('k phải ít nhất là 1')
+        return 0.0 if p == 0 else 1.0
     return 1 - (1 - p) ** k
 
 
 def he_so_chi_phi_moi_viec_thanh_cong(p, k=None):
     """Chi phí mỗi việc thành công, tính bằng bội số của giá một lần chạy."""
+    _kiem_tra_tham_so_a1(p, k)
     success = ti_le_thanh_cong(p, k)
     if success == 0:
         return math.inf
@@ -107,8 +116,9 @@ def co_mau(p1, p2, alpha=0.05, power=0.8):
 
 
 if __name__ == '__main__':
-    runs = pd.read_csv('logix_runs.csv')
-    reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
+    src_dir = Path(__file__).resolve().parent
+    runs = pd.read_csv(src_dir / 'logix_runs.csv')
+    reqs = pd.read_csv(src_dir / 'logix_requests.csv', keep_default_na=False)
     kiem_tra_dap_an_biet_truoc()
     ket_qua = mo_hinh(runs, reqs)
     for ten, gia_tri in ket_qua.items():
