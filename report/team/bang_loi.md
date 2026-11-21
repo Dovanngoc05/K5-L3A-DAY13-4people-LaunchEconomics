@@ -14,49 +14,44 @@ Bộ nhãn ở cột **Nhãn người 1** được điền theo yêu cầu với
 | Giới hạn hệ thống | Thiếu dữ liệu, ngoài phạm vi hoặc không xử lý được đầu vào |
 | Ngầm | Sai tồn tại nhưng chỉ được phát hiện qua kiểm tra, chưa có khách hoặc hệ thống nhận ra |
 
-## Hai bộ nhãn độc lập
+## Hai bộ nhãn — đánh giá tham khảo CP3
 
-Người gắn nhãn 1: Nguyễn Hữu Đức — 2A202603429 (có hỗ trợ AI) · Người gắn nhãn 2: chờ bổ sung bộ nhãn riêng.
+Người gắn nhãn 1: Nguyễn Hữu Đức — 2A202603429 (có hỗ trợ AI) · Người gắn nhãn 2: Đỗ Văn Ngọc — 2A202603391 
 
-| Ca | Nhãn người 1 | Nhãn người 2 | Trùng? | Nhãn thống nhất |
-| -: | --------------- | --------------- | ------- | ------------------ |
-| 1 | Do người dùng | ... | ... | ... |
-| 2 | Hệ thống | ... | ... | ... |
-| 3 | Ngữ cảnh | ... | ... | ... |
-| 4 | Giới hạn hệ thống | ... | ... | ... |
-| 5 | Ngầm | ... | ... | ... |
-| 6 | Do người dùng | ... | ... | ... |
-| 7 | Hệ thống | ... | ... | ... |
-| 8 | Hệ thống | ... | ... | ... |
-| 9 | Do người dùng | ... | ... | ... |
-| 10 | Ngữ cảnh | ... | ... | ... |
-| 11 | Giới hạn hệ thống | ... | ... | ... |
-| 12 | Ngầm | ... | ... | ... |
-| 13 | Giới hạn hệ thống | ... | ... | ... |
-| 14 | Do người dùng | ... | ... | ... |
-| 15 | Hệ thống | ... | ... | ... |
-| 16 | Ngữ cảnh | ... | ... | ... |
-| 17 | Ngầm | ... | ... | ... |
-| 18 | Ngữ cảnh | ... | ... | ... |
-| 19 | Giới hạn hệ thống | ... | ... | ... |
-| 20 | Hệ thống | ... | ... | ... |
+| Ca | Nhãn người 1 | Nhãn người 2 (tham khảo) | So với người 1 | Lý do ngắn |
+| -: | --------------- | ------------------------- | --------------- | ------------ |
+| 1 | Do người dùng | Do người dùng | Trùng | Khách nhập thiếu chữ số; ngân hàng từ chối lệnh. |
+| 2 | Hệ thống | Hệ thống | Trùng | Agent chọn sai tham số bảng giá và hoàn thiếu tiền. |
+| 3 | Ngữ cảnh | Ngữ cảnh | Trùng | Hoàn về ví đúng thiết kế, nhưng khác kỳ vọng khách về tài khoản ngân hàng. |
+| 4 | Giới hạn hệ thống | Giới hạn hệ thống | Trùng | Không có dữ liệu chặng của hãng nước ngoài. |
+| 5 | Ngầm | Ngầm | Trùng | Hoàn sai giá nhưng khách và hệ thống không phát hiện; kiểm tra mẫu mới tìm ra. |
+| 6 | Do người dùng | Do người dùng | Trùng | Khách chọn sai luồng so với mô tả hàng bị vỡ. |
+| 7 | Hệ thống | Hệ thống | Trùng | Báo hoàn thành dù API ghi sổ thất bại sau các lần thử lại. |
+| 8 | Hệ thống | Hệ thống | Trùng | Agent viện dẫn điều khoản không tồn tại trong chính sách hiện hành. |
+| 9 | Do người dùng | Do người dùng | Trùng | Khách nhập mã sàn thay vì mã vận đơn; thiếu gợi ý là điểm cần sửa của sản phẩm. |
+| 10 | Ngữ cảnh | Ngữ cảnh | Trùng | Từ chối đúng điều khoản, nhưng xung đột với cam kết 24 giờ hiển thị trên ứng dụng. |
+| 11 | Giới hạn hệ thống | Giới hạn hệ thống | Trùng | Đầu vào thoại không được hệ thống hỗ trợ. |
+| 12 | Ngầm | Ngầm | Trùng | Dữ liệu thiếu làm phát sinh chi phí lặp; không ai phát hiện trong ba tuần. |
+| 13 | Giới hạn hệ thống | Giới hạn hệ thống | Trùng | Yêu cầu ngoài phạm vi; trợ lý không nêu giới hạn và trả lời lạc đề. |
+| 14 | Do người dùng | Do người dùng | Trùng | Khách bấm xác nhận nhầm khiến yêu cầu đóng. |
+| 15 | Hệ thống | Hệ thống | Trùng | Tính 100% thay vì 50%; nhân viên phát hiện trước khi gửi. |
+| 16 | Ngữ cảnh | Ngữ cảnh | Trùng | Gửi đúng quy tắc “ngay khi xong” nhưng thời điểm 2:14 sáng không phù hợp hoàn cảnh. |
+| 17 | Ngầm | Ngầm | Trùng | Cache bảng giá cũ gây lệch tiền; lỗi chỉ được nêu là không ai phát hiện trong mô tả. |
+| 18 | Ngữ cảnh | Ngữ cảnh | Trùng | Số tiền đúng nhưng thiếu phép tính nên khách hiểu là hoàn thiếu. |
+| 19 | Giới hạn hệ thống | Giới hạn hệ thống | Trùng | Dữ liệu chỉ truy cập được 12 tháng; trợ lý đã báo giới hạn và chuyển người. |
+| 20 | Hệ thống | Hệ thống | Trùng | Thiếu khóa chống trùng khiến hệ thống hoàn tiền hai lần. |
 
-**Tỉ lệ đồng thuận:** chưa tính, chờ bộ nhãn người 2; không suy ra đồng thuận từ bộ nhãn người 1.
+**Đánh giá:** theo tiêu chí đã ghi trong file, cả 20 nhãn người 1 đều hợp lý; các nhãn người 2 tham khảo cũng trùng cả 20. Tuy nhiên, vì người 2 đã xem nhãn người 1 và phần giải thích trước khi quyết định, **20/20 (100%) chỉ là mức trùng khi rà soát, không phải tỉ lệ đồng thuận độc lập của bài CP3**. Không dùng kết quả này để tuyên bố đã đạt yêu cầu gắn nhãn độc lập ≥80%.
 
-## Quy tắc phân biệt cho các ca không trùng
+### Các ca cần lưu ý khi chấm
 
-Mỗi ca không trùng một câu. Đồng thuận dưới 80% thì ghi định nghĩa đã viết lại.
+- **Ca 1, 6, 9, 14:** nhãn Do người dùng dựa vào đầu vào/lựa chọn sai được mô tả trực tiếp. Việc hệ thống nên xác thực, gợi ý hoặc xác nhận lại là biện pháp giảm lỗi, không làm đổi nguyên nhân của ca theo cách phân loại hiện tại.
+- **Ca 4, 11, 13, 19:** Giới hạn hệ thống áp dụng khi thiếu dữ liệu, không hỗ trợ loại đầu vào hoặc yêu cầu ngoài phạm vi. Ở ca 13, câu trả lời lạc đề là biểu hiện cần khắc phục; nguyên nhân phân loại vẫn là giới hạn phạm vi.
+- **Ca 5, 12, 17:** Ngầm chỉ dùng khi lỗi chưa bị khách hoặc hệ thống nhận ra vào thời điểm xảy ra và chỉ lộ qua kiểm tra/đối soát sau đó.
+- **Ca 10, 16, 18:** Ngữ cảnh là khi hành vi đúng theo thiết kế/chính sách nhưng kỳ vọng, thời điểm hoặc cách diễn đạt không phù hợp hoàn cảnh khách.
+- **Ca 2, 7, 8, 15, 20:** Hệ thống vì xử lý, viện dẫn chính sách hoặc thực thi sai; ca 15 vẫn là lỗi hệ thống dù nhân viên chặn được trước khi gửi.
 
-- Chưa xác định các ca bất đồng vì chưa có bộ nhãn người 2. Sau khi so, ghi một câu phân biệt cho mỗi ca bất đồng.
-
-### Giải thích các ca dễ nhầm trong bộ nhãn người 1
-
-- Ca 6 và 9: nguyên nhân gốc là khách chọn sai mục hoặc nhập sai loại mã; hướng dẫn và phát hiện mâu thuẫn thuộc biện pháp cải thiện.
-- Ca 8 và 15: lỗi đã hiện trong câu trả lời hoặc được nhân viên bắt được, nên xếp Hệ thống.
-- Ca 12: kết quả đúng nhưng chi phí tăng kéo dài không ai nhận ra, nên xếp Ngầm; lỗi có thể nằm ở chi phí.
-- Ca 13: yêu cầu nằm ngoài phạm vi trợ lý, nên xếp Giới hạn hệ thống; cách giải thích giới hạn cần cải thiện.
-- Ca 18: số tiền đúng chính sách nhưng thiếu cách tính làm khách hiểu nhầm, nên xếp Ngữ cảnh.
-
+**Đồng thuận độc lập CP3:** chưa đo được. Muốn có số hợp lệ, cần một thành viên chưa xem bộ nhãn 1 và lý do ở trên tự gắn đủ 20 ca trước khi đối chiếu. Khi đó tính số ca trùng / 20; nếu chưa thể tổ chức lượt độc lập, báo đây là rà soát tham khảo và không ghi 100% là kết quả đồng thuận.
 ## Bảng khắc phục cho 5 ca, mỗi loại một ca
 
 Cách phát hiện phải đo được (event, ngưỡng, tần suất). Người phụ trách là một vai trò, không ghi "cả đội".
@@ -71,4 +66,4 @@ Cách phát hiện phải đo được (event, ngưỡng, tần suất). Ngườ
 
 **Trạng thái bảng khắc phục:** đề xuất chuẩn bị trước, chưa thống nhất với người 4. Ngưỡng phát hiện là đề xuất, chưa phải số quan sát hoặc luật dừng đã duyệt. Đối chiếu event với [chi_so.md](chi_so.md) trước triển khai.
 
-**Phần chờ:** bộ nhãn người 2, số ca trùng, quy tắc cho bất đồng và nhãn thống nhất. Công thức đồng thuận = số ca trùng / 20 × 100%; mục tiêu ít nhất 16/20 = 80%. Chưa có đủ dữ liệu để tính.
+**Việc còn thiếu:** một lượt gắn nhãn độc lập mù để đo đồng thuận theo yêu cầu CP3. Phần rà soát tham khảo ở trên chưa thay thế lượt này. Nếu có lượt độc lập, ghi kết quả so nhãn và quy tắc cho các ca bất đồng; ngưỡng yêu cầu là ít nhất 16/20 = 80%.
