@@ -11,3 +11,6 @@ venv/
 example.zip
 example/
 __MACOSX/
+
+# Phân công chỉ lưu trên máy
+/PHAN_CONG.md
