@@ -126,14 +126,14 @@ def bang_chi_phi(k, runs, reqs):
     lines = ['# Bảng chi phí · Nhiệm vụ A và B', '',
              'Nguồn: hai CSV gốc; tính bằng `src/kiem_tra_so_lieu.py` theo công thức của đề. '
              'Chạy trong `src/`: `python lab13.py --nguoi-2 --ghi-bao-cao`.', '',
-             'Đây là bộ kiểm số độc lập của người 2; đối chiếu lại với `mo_hinh` của người 1 khi bàn giao. '
+             'Đây là bộ kiểm số độc lập của người 2; đối chiếu với `mo_hinh` bằng lệnh chạy trên. '
              'Dữ liệu lab là giả lập; mọi tổng, chi phí và tỉ lệ chi phí chứa phút giả lập đều mang nhãn **simulated**.', '',
              '## A1 · Ba phép thử đáp án biết trước', '',
              '| Phép thử (p = 0,8) | Tính tay |', '| --- | ---: |',
              '| Tối đa 2 lần: 1 + (1 − 0,8) | 1,20 |',
              '| Chạy đến khi đúng: 1 / 0,8 | 1,25 |',
              '| Tối đa 3: (1 + 0,2 + 0,04) / (1 − 0,2³) | 1,25 |', '',
-             'Đây là kết quả kiểm số; ba assert trong A1 của người 1 cần chạy lại sau khi hoàn thiện code.', '',
+             'Đây là kết quả kiểm số; lệnh chạy trên cũng kiểm tra ba assert A1 của nhóm.', '',
              '## A2 · Mô hình chi phí từ trace', '',
              '| Khoản | Số tiền (đ) / số việc | Nguồn | Nhãn |', '| --- | ---: | --- | --- |']
     rows = [('Token', 'token', 'Tổng tokens_in × 26/1.000 + tokens_out × 130/1.000, mọi run', 'đo từ trace'),
@@ -195,7 +195,7 @@ def bang_chi_phi(k, runs, reqs):
               '- Xem lại 100% gần mất lợi ích chi phí, vượt 12.000 đ nếu làm lại 15,3 phút (simulated); pilot cần đo phút thật và mức giảm xem lại an toàn.', '',
               '## Nguồn và giới hạn đối chiếu', '',
               '- Công thức: `docs/du_lieu_va_cong_thuc.md`; quy ước giới hạn chạy, A4 và B4: `docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md`.',
-              '- Bộ kiểm số chạy độc lập đã đối chiếu số hướng dẫn trong sai số 2%; code A–B của người 1 và các hồ sơ người 3–4 vẫn cần kiểm tra sau bàn giao.']
+              '- Bộ kiểm số đối chiếu số hướng dẫn trong sai số 2%; trạng thái so code A–B ghi ở `ket_qua_kiem_tra.md`. Hồ sơ người 3–4 cần kiểm tra khi hoàn thiện.']
     return '\n'.join(lines) + '\n'
 
 
@@ -234,10 +234,10 @@ Ngưỡng mở lại tuyệt đối 3% thấp hơn cả nền toàn mẫu và ph
 ## Phụ thuộc và kiểm tra cuối
 
 - **Làm ngay:** D1, E, tính tay và bảng chi phí độc lập đã có; không cần chờ người 1, 3 hoặc 4 để tính các phần này.
-- **Chờ người 1 để chốt kiểm số:** A1–A2 hiện còn khung; trạng thái lần chạy kiểm tra: **{trang_thai}**. Khi có code, chạy lại cùng lệnh để so mô hình gốc, 9 kịch bản và mọi loại yêu cầu.
+- **Đối chiếu code người 1:** trạng thái lần chạy kiểm tra: **{trang_thai}**. Chạy lại cùng lệnh mỗi khi code A–B đổi để so mô hình gốc, 9 kịch bản và mọi loại yêu cầu.
 - **Chờ người 3–4 để so toàn hồ sơ:** `chi_so.md`, các trường kế hoạch trong `pilot_plan.yaml` và `ho_so_launch_v0.md` còn mẫu; D1 đã được điền nhưng chưa thể xác nhận toàn hồ sơ nhất quán.
 - **Bàn giao file chung:** D1 nằm trong `lab13.py`; người 1 cần giữ phần này và nhánh `--nguoi-2` khi ghép A–B. Bộ kiểm số nằm riêng trong `kiem_tra_so_lieu.py` để tránh ghi đè A–B.
-- **Trước nộp:** chạy `python lab13.py` từ đầu đến cuối, so số toàn hồ sơ, chạy trên máy khác; đây vẫn là việc cần làm sau tích hợp.
+- **Kiểm tra tích hợp:** đã chạy `python lab13.py` từ đầu đến cuối sau khi ghép A–B; trước nộp còn cần so số toàn hồ sơ và chạy trên máy khác.
 
 ## Ghi nhận công cụ và đóng góp
 

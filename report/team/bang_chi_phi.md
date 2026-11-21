@@ -2,7 +2,7 @@
 
 Nguồn: hai CSV gốc; tính bằng `src/kiem_tra_so_lieu.py` theo công thức của đề. Chạy trong `src/`: `python lab13.py --nguoi-2 --ghi-bao-cao`.
 
-Đây là bộ kiểm số độc lập của người 2; đối chiếu lại với `mo_hinh` của người 1 khi bàn giao. Dữ liệu lab là giả lập; mọi tổng, chi phí và tỉ lệ chi phí chứa phút giả lập đều mang nhãn **simulated**.
+Đây là bộ kiểm số độc lập của người 2; đối chiếu với `mo_hinh` bằng lệnh chạy trên. Dữ liệu lab là giả lập; mọi tổng, chi phí và tỉ lệ chi phí chứa phút giả lập đều mang nhãn **simulated**.
 
 ## A1 · Ba phép thử đáp án biết trước
 
@@ -12,7 +12,7 @@ Nguồn: hai CSV gốc; tính bằng `src/kiem_tra_so_lieu.py` theo công thức
 | Chạy đến khi đúng: 1 / 0,8 | 1,25 |
 | Tối đa 3: (1 + 0,2 + 0,04) / (1 − 0,2³) | 1,25 |
 
-Đây là kết quả kiểm số; ba assert trong A1 của người 1 cần chạy lại sau khi hoàn thiện code.
+Đây là kết quả kiểm số; lệnh chạy trên cũng kiểm tra ba assert A1 của nhóm.
 
 ## A2 · Mô hình chi phí từ trace
 
@@ -107,4 +107,4 @@ Cả hệ thống = tổng trợ lý + 12.000 × số yêu cầu không thành c
 ## Nguồn và giới hạn đối chiếu
 
 - Công thức: `docs/du_lieu_va_cong_thuc.md`; quy ước giới hạn chạy, A4 và B4: `docs/Lab13_Huong_dan_chi_tiet_buoi_chieu.md`.
-- Bộ kiểm số chạy độc lập đã đối chiếu số hướng dẫn trong sai số 2%; code A–B của người 1 và các hồ sơ người 3–4 vẫn cần kiểm tra sau bàn giao.
+- Bộ kiểm số đối chiếu số hướng dẫn trong sai số 2%; trạng thái so code A–B ghi ở `ket_qua_kiem_tra.md`. Hồ sơ người 3–4 cần kiểm tra khi hoàn thiện.

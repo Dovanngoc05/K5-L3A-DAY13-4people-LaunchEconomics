@@ -31,10 +31,10 @@ Ngưỡng mở lại tuyệt đối 3% thấp hơn cả nền toàn mẫu và ph
 ## Phụ thuộc và kiểm tra cuối
 
 - **Làm ngay:** D1, E, tính tay và bảng chi phí độc lập đã có; không cần chờ người 1, 3 hoặc 4 để tính các phần này.
-- **Chờ người 1 để chốt kiểm số:** A1–A2 hiện còn khung; trạng thái lần chạy kiểm tra: **CHỜ: người 1 chưa hoàn thiện A1–A2; bộ kiểm số độc lập đã chạy**. Khi có code, chạy lại cùng lệnh để so mô hình gốc, 9 kịch bản và mọi loại yêu cầu.
+- **Đối chiếu code người 1:** trạng thái lần chạy kiểm tra: **ĐẠT: A1 và mô hình A2/A3/B1/B2/B3 khớp bộ kiểm số độc lập**. Chạy lại cùng lệnh mỗi khi code A–B đổi để so mô hình gốc, 9 kịch bản và mọi loại yêu cầu.
 - **Chờ người 3–4 để so toàn hồ sơ:** `chi_so.md`, các trường kế hoạch trong `pilot_plan.yaml` và `ho_so_launch_v0.md` còn mẫu; D1 đã được điền nhưng chưa thể xác nhận toàn hồ sơ nhất quán.
 - **Bàn giao file chung:** D1 nằm trong `lab13.py`; người 1 cần giữ phần này và nhánh `--nguoi-2` khi ghép A–B. Bộ kiểm số nằm riêng trong `kiem_tra_so_lieu.py` để tránh ghi đè A–B.
-- **Trước nộp:** chạy `python lab13.py` từ đầu đến cuối, so số toàn hồ sơ, chạy trên máy khác; đây vẫn là việc cần làm sau tích hợp.
+- **Kiểm tra tích hợp:** đã chạy `python lab13.py` từ đầu đến cuối sau khi ghép A–B; trước nộp còn cần so số toàn hồ sơ và chạy trên máy khác.
 
 ## Ghi nhận công cụ và đóng góp
 
