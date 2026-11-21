@@ -6,8 +6,9 @@ Bản gốc chưa sửa nằm ở lab13_starter.py.
 import math
 from numbers import Integral, Real
 from pathlib import Path
-import pandas as pd
+import sys
 from statistics import NormalDist
+import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
 GIA_VAO = 26        # đồng cho 1.000 token đầu vào
@@ -106,16 +107,43 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
 
 
 def co_mau(p1, p2, alpha=0.05, power=0.8):
-    """Cỡ mẫu cho mỗi nhóm khi so sánh hai tỷ lệ độc lập (xấp xỉ chuẩn)."""
+    """D1: công thức so hai tỉ lệ của đề, làm tròn lên mỗi nhóm."""
+    if not (0 < p1 < 1 and 0 < p2 < 1 and p1 != p2):
+        raise ValueError('Hai tỉ lệ phải khác nhau và nằm trong (0, 1)')
+    if not (0 < alpha < 1 and 0 < power < 1):
+        raise ValueError('alpha và power phải nằm trong (0, 1)')
     za = NormalDist().inv_cdf(1 - alpha / 2)
     zb = NormalDist().inv_cdf(power)
     pb = (p1 + p2) / 2
     return math.ceil((za * math.sqrt(2 * pb * (1 - pb))
-                     + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2
+                      + zb * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))) ** 2
                      / (p2 - p1) ** 2)
 
 
+def co_mau_d1(icc=0.02, m=75, nhan_vien_moi_nhom=20, depot_moi_nhom=6):
+    """Đủ năm câu D1, không phụ thuộc code A–B hay statsmodels."""
+    n5, n6 = co_mau(0.70, 0.75), co_mau(0.70, 0.76)
+    de = 1 + (m - 1) * icc
+    n_cum = math.ceil(n5 * de)
+    # c*m / (1 + (m-1)*ICC) >= n6; chỉ có nghiệm nếu c > n6*ICC.
+    mau = nhan_vien_moi_nhom - n6 * icc
+    m6 = math.ceil(n6 * (1 - icc) / mau) if mau > 0 else None
+    de6 = 1 + (m6 - 1) * icc if m6 is not None else None
+    return dict(n_5_diem=n5, de_75=de, n_theo_nhan_vien=n_cum,
+                nhan_vien_can_moi_nhom=math.ceil(n_cum / m),
+                tran_20_nhan_vien=nhan_vien_moi_nhom / icc,
+                tran_6_depot=depot_moi_nhom / icc,
+                n_6_diem=n6, m_6_diem=m6, de_6_diem=de6,
+                n_hieu_dung_6_diem=(nhan_vien_moi_nhom * m6 / de6
+                                    if m6 is not None else None))
+
+
 if __name__ == '__main__':
+    if '--nguoi-2' in sys.argv:
+        # Chạy phần độc lập của người 2.
+        from kiem_tra_so_lieu import main
+        main(ghi_bao_cao='--ghi-bao-cao' in sys.argv)
+        sys.exit(0)
     src_dir = Path(__file__).resolve().parent
     runs = pd.read_csv(src_dir / 'logix_runs.csv')
     reqs = pd.read_csv(src_dir / 'logix_requests.csv', keep_default_na=False)
@@ -209,6 +237,7 @@ if __name__ == '__main__':
     print(f"d 6 depot/nhóm: trần hiệu dụng={6/0.02:,.0f}")
     print(f"e MDE 6 điểm: {n6:,}/nhóm; m=299, DE={de299:.2f}, "
           f"hiệu dụng={20*299/de299:,.1f}/nhóm")
+    print('D1 · Cỡ mẫu (kiểm số):', co_mau_d1())
 
     print('\nE · Chỉ số hiện tại (simulated)')
     primary = ((reqs['dong_trong_24h'].astype(int) == 1)
